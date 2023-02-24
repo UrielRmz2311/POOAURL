@@ -20,6 +20,9 @@ class Personaje:
         cargador= cargador + municiones
         print("El arma tiene "+ str(cargador) +" balas")
         
+    def __pensar(self):
+        print("Estoy pensandooooo........")
+        
     # Declarar Getters y Setter de atributos
     def getNombre(self):
         return self.__nombre
