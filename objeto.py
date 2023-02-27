@@ -22,6 +22,7 @@ villano=Personaje(especieV,nombreV,alturaV)
 
 #3. Usar atributos y métodos
 
+#Ejemplo de un set para atributo
 heroe.setNombre(" Pepe pecas ")
 
 print("")
@@ -33,7 +34,9 @@ print("Y tiene una altura de: "+ str(heroe.getAltura())) #str por que float es u
 heroe.correr(True)
 heroe.lanzarGranadas()
 heroe.recargarArma(recargaH)
-heroe.__pensar()
+
+#Ejemplo de un metodo privado
+#heroe.__pensar()
 
 print("")
 print("####### Objeto Villano #")
