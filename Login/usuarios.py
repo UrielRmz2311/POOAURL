@@ -8,7 +8,7 @@ class usuario():
         self.conectado = False        
         usuario.numUsuarios+=1
     
-    def conectar (self, Password=None):
+    def validar (self, Password=None):
         if Password==None:
             Contraseña =input("Ingrese una contraseña: ")
         else:
