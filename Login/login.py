@@ -42,8 +42,8 @@ def createLogin():
     login.mainloop()
     
 def acceder():
-    test= usuario1.conectar(Contraseña.get())
-    if test:
+    Acceso= usuario1.conectar(Contraseña.get())
+    if Acceso:
         messagebox.showinfo("Conectado","Se accedio con exito")
     else:
         messagebox.showerror("Error","Acceso Denegado Revise sus credenciales")
