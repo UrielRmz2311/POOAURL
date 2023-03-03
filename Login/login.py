@@ -5,7 +5,7 @@ login = Tk()
 Usuario= StringVar()
 Contraseña =StringVar()
 
-def createGUI():
+def createLogin():
 
     #ventanapricipal
     #login = Tk()
@@ -46,10 +46,9 @@ def acceder():
     if test:
         messagebox.showinfo("Conectado","Se accedio con exito")
     else:
-        messagebox.showerror("Error","Datos incorrectos")
+        messagebox.showerror("Error","Acceso Denegado Revise sus credenciales")
 
 if __name__=="__main__":
-    #usuario1= usuario(input("Ingrese un usuario: "), input("Ingrese una contraseña: ")) 
     usuario1= usuario("Alan","12345")
-    createGUI()
+    createLogin()
         

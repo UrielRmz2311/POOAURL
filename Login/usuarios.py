@@ -5,9 +5,7 @@ class usuario():
         self.nombre = nombre
         self.contra = contra
         
-        self.conectado = False
-        self.intentos = 3
-        
+        self.conectado = False        
         usuario.numUsuarios+=1
     
     def conectar (self, Password=None):
@@ -20,15 +18,11 @@ class usuario():
             self.conectado =True
             return True
         else:
-            self.intentos-=1
-            if self.intentos > 0:
-                print("Contraseña incorrecta, Revise sus credenciales")
-                if Password!=None:
-                    return False
-                print("Intentos restantes",self.intentos)
-                self.conectar()
-            else:
-                print("Error, no pudo acceder")
+            print("Datos incorrectos, Revise sus credenciales")
+        if Password!=None:
+            return False
+        else:
+         print("Error, no pudo acceder")
                 
     def __str__ (self):
         if self.conectado:
@@ -36,8 +30,3 @@ class usuario():
         else:
             conect ="Desconectado"  
         return f"El usuario es {self.nombre} y está {conect}" 
-    
-#usuario1 =usuario(input("Ingrese un usuario: "), input("Ingrese una contraseña: ")) 
-#print(usuario1)
-#usuario1.conectar() 
-#print(usuario1)
