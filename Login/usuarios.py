@@ -8,18 +8,20 @@ class usuario():
         self.conectado = False        
         usuario.numUsuarios+=1
     
-    def validar (self, Password=None):
-        if Password==None:
+    def validar (self, Password=None, nombreusu=None):
+        if (Password==None)and(nombreusu==None):
+            Usuario=input("Ingrese un usuario: ")
             Contraseña =input("Ingrese una contraseña: ")
         else:
+            Usuario=nombreusu
             Contraseña=Password        
-        if Contraseña == self.contra:
+        if (Contraseña == self.contra)and(Usuario == self.nombre):
             print("Se conecto con exito !!")
             self.conectado =True
             return True
         else:
             print("Datos incorrectos, Revise sus credenciales")
-        if Password!=None:
+        if (Password!=None)and(nombreusu!=None):
             return False
         else:
          print("Error, no pudo acceder")

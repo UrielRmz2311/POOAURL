@@ -42,7 +42,7 @@ def createLogin():
     login.mainloop()
     
 def acceder():
-    Acceso= usuario1.validar(Contraseña.get())
+    Acceso= usuario1.validar(Contraseña.get(), Usuario.get())
     if Acceso:
         messagebox.showinfo("Conectado","Se accedio con exito")
     else:
