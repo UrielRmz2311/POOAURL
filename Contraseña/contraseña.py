@@ -1,13 +1,12 @@
 import random
 class contraseña():
 
-    def __init__(self,Longitud,Caracter):
-        self.Longitud = Longitud
-        self.Caracter = Caracter  
+    def __init__(self,Longi,Carac):
+        self.Longi = Longi
+        self.Carac = Carac  
         
-    def GenerarContra (self,Contraseña,Caracter,Longitud):  
-        Longitud==self.Longitud
-        Caracter==self.Caracter  
+    def GenerarContra (self,Longitud, Caracter):  
+          
         if Longitud == 0:
             Longitud=8
         else:
@@ -27,5 +26,5 @@ class contraseña():
                 print("ERROR!!! Se registro una respuesta invalida")
         Contra=random.sample(base,Longitud)
         Contraseña="".join(Contra)
-        self.Contraseña = Contraseña
+        print(Contraseña)
         
