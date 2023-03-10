@@ -1,56 +1,71 @@
 from tkinter import *
-from tkinter import StringVar, IntVar
-
-
-#Longitud=IntVar()
+from tkinter import IntVar, messagebox
+from contraseña import contraseña
 
 Interfaz=Tk()
-Interfaz.title("Generador de contraseñas")
-Interfaz.geometry("400x300")
+Longitud=IntVar()
+Caracter=IntVar()
 
-seccion = Frame(Interfaz,width=400,height=300)
-seccion.pack()
-seccion.config(bg ="lightblue")
-seccion.config(relief="sunken")
-seccion.config(bd=25)
+def createContraseña():
+   
+    Interfaz.title("Generador de contraseñas")
+    Interfaz.geometry("400x300")
 
-seccion2= Frame(Interfaz,bg="lightblue") #bg es opcional
-seccion2.pack(expand=True, fill='both')
+    seccion = Frame(Interfaz,width=400,height=300)
+    seccion.pack()
+    seccion.config(bg ="lightblue")
+    seccion.config(relief="sunken")
+    seccion.config(bd=25)
 
-seccion3= Frame(Interfaz,bg="lightblue") #bg es opcional
-seccion3.pack(expand=True, fill='both')
+    seccion2= Frame(Interfaz,bg="lightblue") #bg es opcional
+    seccion2.pack(expand=True, fill='both')
 
-label = Label(seccion, text="Genere su contraseña")
-label.pack(anchor=CENTER)
-label.config(fg="blue",    
-             bg="white",  
-             font=("Verdana",24)) 
+    seccion3= Frame(Interfaz,bg="lightblue") #bg es opcional
+    seccion3.pack(expand=True, fill='both')
 
-Longi = Label(seccion2, text="Número de caracteres/default: ")
-Longi.config(bg="lightblue")
-Longi.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
+    label = Label(seccion, text="Genere su contraseña")
+    label.pack(anchor=CENTER)
+    label.config(fg="blue",    
+                bg="white",  
+                font=("Verdana",24)) 
 
-#Longitud.set("")
-Insertarlongi=Entry(seccion2)#textvariable=Longitud)
-Insertarlongi.grid(column=2, row=0)
+    Longi = Label(seccion2, text="Número de caracteres (0=default): ")
+    Longi.config(bg="lightblue")
+    Longi.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
 
-Carac = Label(seccion2, text="Caracter especial SI/NO: ")
-Carac.config(bg="lightblue")
-Carac.grid(column=0, row=2, padx=10, pady=10, columnspan=2)
+    Longitud.set("")
+    Insertarlongi=Entry(seccion2,textvariable=Longitud)
+    Insertarlongi.grid(column=2, row=0)
 
-#Longitud.set("")
-InsertarCarac=Entry(seccion2)#textvariable=Longitud)
-InsertarCarac.grid(column=2, row=2)
+    Carac = Label(seccion2, text="Caracter especial (1=SI/0=NO): ")
+    Carac.config(bg="lightblue")
+    Carac.grid(column=0, row=2, padx=10, pady=10, columnspan=2)
 
-Generar=Button(seccion2, text="GENERAR", bg="Blue",fg="white")
-Generar.grid(column=2, row=4)
+    Caracter.set("")
+    InsertarCarac=Entry(seccion2,textvariable=Caracter)
+    InsertarCarac.grid(column=2, row=2)
+
+    Generar=Button(seccion2, text="GENERAR", bg="Blue",fg="white",command=generador)
+    Generar.grid(column=2, row=4)
 
 
-Contra = Label(seccion3, text="Su contraseña es: ")
-Contra.config(bg="lightblue")
-Contra.grid(column=0, row=2, padx=10, pady=10, columnspan=2)
+    Contra = Label(seccion3, text="Su contraseña es: ")
+    Contra.config(bg="lightblue")
+    Contra.grid(column=0, row=2, padx=10, pady=10, columnspan=2)
 
-Contraseña=Entry(seccion3)
-Contraseña.grid(column=2, row=2)
+    Password=Text(seccion3)
+    Password.config(width=25, height=2)
+    Password.grid(column=2, row=2)
 
-Interfaz.mainloop()
+    Interfaz.mainloop()
+    
+def generador():
+    generar= contra1.GenerarContra()
+    if generar:
+        messagebox.showinfo("Su contraseña se genero correctamente")
+    else:
+        messagebox.showerror("ERROR!!! Se registro una respuesta invalida")
+        
+if __name__=="__main__":
+    contra1=contraseña(Longitud,Caracter)
+    createContraseña()
