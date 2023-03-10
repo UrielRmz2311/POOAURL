@@ -10,7 +10,10 @@ class contraseña():
         if Longitud == 0:
             Longitud=8
         else:
-            Longitud=Longitud
+            if Longitud==None:
+                Longitud=8
+            else:
+                Longitud=Longitud
         if Caracter == 1:
             minus="abcdefghijklmnñopqrstuvwxyz"
             simbolos= "@#$%&[]{()}"

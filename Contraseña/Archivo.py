@@ -5,8 +5,10 @@ from contraseña import contraseña
 Interfaz=Tk()
 Longitud=IntVar()
 Caracter=IntVar()
-Passw=StringVar()
+#Passw=StringVar()
+
 contras=contraseña(Longitud,Caracter)
+#contra=contraseña(Contraseña)
 
 def createContraseña():
    
@@ -55,9 +57,7 @@ def createContraseña():
     Contra.config(bg="lightblue")
     Contra.grid(column=0, row=2, padx=10, pady=10, columnspan=2)
 
-    
-    Password= Entry(seccion3, textvariable=Passw)
-    Password.config(width=25, height=2)
+    Password= Entry(seccion3)
     Password.grid(column=2, row=2)
 
     Interfaz.mainloop()
@@ -66,12 +66,12 @@ def generador():
     Longi = int(Longitud.get())
     Carac = int(Caracter.get())
     contras.GenerarContra(Longi,Carac)
-    print(Longi,Carac)
-    #generar= contra1.GenerarContra(Carac,Longi)
-    #if generar:
-     #   messagebox.showinfo("Su contraseña se genero correctamente",generar)
-    #else:
-       # messagebox.showerror("ERROR!!! Se registro una respuesta invalida")
+    if Carac>1:
+        messagebox.showerror("ERROR!!!"," Se registro una respuesta invalida")
+    else:
+        messagebox.showinfo("Exelente","Su contraseña se genero correctamente")
+        
+        
         
 if __name__=="__main__":
     #contra1=contraseña(Caracter,Longitud)
