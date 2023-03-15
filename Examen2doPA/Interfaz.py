@@ -56,4 +56,7 @@ AN.place(x=170,y=160)
 CA=Entry(seccion2)
 CA.place(x=170,y=200)
 
+Generar=Button(seccion2, text="GENERAR", bg="Blue",fg="white")
+Generar.place(x=150,y=240)
+
 Interfaz.mainloop()
