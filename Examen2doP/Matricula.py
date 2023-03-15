@@ -14,9 +14,10 @@ seccion.config(bd=25)
 seccion2= Frame(Interfaz,bg="lightblue") #bg es opcional
 seccion2.pack(expand=True, fill='both')
 
-label = Label(Interfaz, text="Genere su Matricula")
+label = Label(seccion, text="Genere su Matricula")
 label.pack(anchor=CENTER)
 label.config(fg="blue",    
             bg="lightblue",  
             font=("Verdana",24)) 
+
 Interfaz.mainloop()
