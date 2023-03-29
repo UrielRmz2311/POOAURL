@@ -18,7 +18,7 @@ def Buscarusuario():
         cadena= str(usu[0])+" "+ usu[1]+" "+ usu[2]+" "+ str(usu[3])      
     
     if (rsUsuario):
-        print(cadena)
+        textBus.insert("0.0",cadena)
     else:
         messagebox.showinfo("No encontrado", "Usuario no registrado en la BD")
         
@@ -63,10 +63,8 @@ txtid= Entry(pestana2, textvariable=varBus).pack()
 btnBusqueda= Button(pestana2, text="Buscar",command=Buscarusuario).pack()
 
 subBus= Label(pestana2,text="Registrado:", fg="Blue",font=("Modern",15)).pack()
-textBus=tk.Text(pestana2,height=5, width=52).pack()
-
-
-
+textBus=tk.Text(pestana2,height=5, width=52)
+textBus.pack()
 
 
 panel.add(pestana1,text="Formulario de usuarios")
