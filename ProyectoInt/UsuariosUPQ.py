@@ -10,7 +10,7 @@ def ejecutaInsert():
     controlador.guardarUsuario(varNom.get(),varAP.get(),varAM.get(),varED.get(),varCor.get())
 
 Ventana=Tk()
-Ventana.title("CRUD Usuarios")
+Ventana.title("UNIVERSIDAD POLITECNICA DE QUERÉTARO")
 Ventana.geometry("500x300")
 
 

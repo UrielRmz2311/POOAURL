@@ -91,6 +91,27 @@ tabla.pack()
 
 btnConsulta = Button(pestana3, text = "Registros", command = ConsultarRegistros).pack()
 
+#Pestaña4: Actualizar Usuarios
+titulo4 = Label(pestana4, text = "ACTU. ELIM. Usuarios", fg = "red", font = ("Arial", 18)).pack()
+
+columns = ("id", "nombre", "correo", "contra")
+tabla = ttk.Treeview(pestana4, columns = columns, show = "headings")
+btnConsulta = Button(pestana4, text = "Registros", command = ConsultarRegistros).pack()
+
+tabla.column("id", anchor=tk.W, width=50)
+tabla.column("nombre", anchor=tk.W, width=150)
+tabla.column("correo", anchor=tk.W, width=150)
+tabla.column("contra", anchor=tk.W, width=200)
+
+tabla.heading("id", text = "ID", )
+tabla.heading("nombre", text = "NOMBRE")
+tabla.heading("correo", text = "CORREO")
+tabla.heading("contra", text = "CONTRASEÑA")
+
+tabla.pack()
+
+
+
 
 panel.add(pestana1,text="Formulario de usuarios")
 panel.add(pestana2,text="Buscar Usuario")
