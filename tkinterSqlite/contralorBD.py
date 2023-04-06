@@ -85,4 +85,51 @@ class controladorBD:
             return Consulta
         except sqlite3.OperationalError:
             print("Error, No se encontro ningun usuario")
+            
+#Metodo para modificar cualquier registro          
+    def modificarRegistro(self, id, nombre, correo, contra):
+        conx = self.conexionBD()
         
+        if(id == "" or nombre == "" or correo == "" or contra == ""):
+            messagebox.showwarning("Cuidado", "ningun campo puede estar vacio")
+            conx.close()
+        else:
+            try:
+                cursor = conx.cursor()
+                nom = nombre
+                correo = correo
+                conH = self.encriptarCon(contra)
+                sqlActualizar = "UPDATE TBRegistrados SET nombre=?, correo=?, contra=? WHERE id=?"
+                
+                cursor.execute(sqlActualizar, [nom, correo, conH, id])
+                nuevousuario = cursor.fetchall()
+                conx.commit()
+                conx.close()
+                messagebox.showinfo("Exito!!", "El usuario fue modificado")
+                return nuevousuario
+            
+            except sqlite3.OperationalError:
+                print("Error Consulta")
+                
+#Metodo para eliminar ususario
+    def eliminarUsuario(self, id):
+        conx = self.conexionBD()
+        
+        if(id == ""):
+            messagebox.showwarning("Cuidado", "Favor de llenar el campo con una ID")
+            conx.close()
+        else:
+            try:
+                cursor = conx.cursor()
+                sqlDelete = "DELETE FROM TBRegistrados WHERE id=?"
+                
+                cursor.execute(sqlDelete, [id])
+                eliminarusu = cursor.fetchall()
+                conx.commit()
+                conx.close()
+                messagebox.showinfo("Exito!!", "El registro fue eliminado")
+                
+                return eliminarusu
+            
+            except sqlite3.OperationalError:
+                print("Error Consulta")
