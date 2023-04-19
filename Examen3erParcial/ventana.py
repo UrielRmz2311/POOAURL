@@ -12,49 +12,36 @@ def ejecutaInsert():
 
 #-------------------------------------------------------------------------
 def BuscarMercancias():
-    rsMercancia=controlador.consultarMercancia(varBus.get())
+    rsMerca = controlador.consultarMercancia(varBus.get())
     
-    for usu in rsMercancia:
-        cadena= str(usu[0])+" "+ usu[1]+" "+ usu[2]      
+    for usu in rsMerca:
+        cadena = str(usu[0])+" "+ usu[1]+" "+ usu[2]+" "   
     
-    if (rsMercancia):
+    if (rsMerca):
         textBus.insert("0.0",cadena)
     else:
-        messagebox.showinfo("No encontrado", "Usuario no registrado en la BD")
-#-------------------------------------------------------------------------
-#def ConsultarRegistros():
- #   Registrados = controlador.consultarUsuarios()
-  #  tabla.delete(*tabla.get_children())
-   # for user in Registrados:
-    #    tabla.insert("", tk.END, text = "", values = user)
-#-------------------------------------------------------------------------      
-#def ejecutaModificar():
- #   rsUsuario = controlador.consultaUsuario(varid.get())
-  #  if(rsUsuario):
-   #     controlador.modificarRegistro(varid.get(), varNombre.get(), varCorreo.get(), varContra.get())
-    #else:
-     #   messagebox.showinfo("No encontrado", "Usuario no registardo en la BD")
+        messagebox.showinfo("No encontrado", "Mercancia no registrado en la BD")
 #--------------------------------------------------------------------------
-#def ejecutaEliminar():
- #   sel = messagebox.askyesno("Elimiar Usuario", "Seguro que desea eliminar el usuario?")
-  #  if (sel == True):
+def ejecutaEliminar():
+    sel = messagebox.askyesno("Elimiar Mercancia", "Seguro que desea eliminar la Mercancia?")
+    if (sel == True):
         
-   #     try:
-    #        controlador.eliminarUsuario(ID.get())
-     #   except sqlite3.OperationalError:
-      #      print("Error Consulta")
+        try:
+            controlador.eliminarUsuario(ID.get())
+        except sqlite3.OperationalError:
+            print("Error Consulta")
 #------------------------------------------------------------------------------
-#def ejecutaBuscar():
- #   rsUsuario = controlador.consultaUsuario(ID.get())
+def ejecutaBuscar():
+    rsMercancia = controlador.consultaUsuario(ID.get())
     
-  #  txtusu.delete("1.0", "end")
-   # for usu in rsUsuario:
-    #    cadena = str(usu[0])+" "+ usu[1]+" "+ usu[2]+" "+ str(usu[3])
+    txtusu.delete("1.0", "end")
+    for usu in rsMercancia:
+        cadena = str(usu[0])+" "+ usu[1]+" "+ usu[2]+" "
     
-    #if(rsUsuario):
-     #   txtusu.insert("0.0", cadena)
-    #else:
-     #   messagebox.showinfo("Error!!", "El usuario no esta registrado en la BD")
+    if(rsMercancia):
+        txtusu.insert("0.0", cadena)
+    else:
+        messagebox.showinfo("Error!!", "Mercancia no esta registrado en la BD")
 #-------------------------------------------------------------------------------
 
 Ventana=Tk()
@@ -85,16 +72,16 @@ btnGuardar= Button(pestana1, text="Guardar Mercancia", command=ejecutaInsert).pa
 titulo5 = Label(pestana2, text = "Eliminar Mercancia", fg = "red", font = ("Arial", 18)).pack()
  
 ID= tk.StringVar()
-lblID= Label(pestana2, text = "Pais de Mercancia: ").pack()
+lblID= Label(pestana2, text = "ID Mercancia: ").pack()
 txtID= Entry(pestana2, textvariable = ID).pack()
 
-btnBuscar = Button(pestana2, text = "Buscar").pack()
+btnBuscar = Button(pestana2, text = "Buscar", command=ejecutaBuscar).pack()
 
 usuarioRe = Label(pestana2, text = "Mercancia Registrada:", fg = "blue", font = ("Arial", 18)).pack()
 txtusu = tk.Text(pestana2, height = 2, width = 52)
 txtusu.pack()
 
-btnBusqueda = Button(pestana2, text = "Eliminar").pack()
+btnBusqueda = Button(pestana2, text = "Eliminar", command=ejecutaEliminar).pack()
 
 #Pestaña2: Buscar Mercancia---------------------------------------------------------------------
 
