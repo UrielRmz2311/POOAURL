@@ -12,7 +12,7 @@ def ejecutaInsert():
 
 #-------------------------------------------------------------------------
 def BuscarMercancias():
-    rsMerca = controlador.consultarMercancia(varBus.get())
+    rsMerca = controlador.consultaMercancia(varBus.get())
     
     for usu in rsMerca:
         cadena = str(usu[0])+" "+ usu[1]+" "+ usu[2]+" "   
@@ -32,7 +32,7 @@ def ejecutaEliminar():
             print("Error Consulta")
 #------------------------------------------------------------------------------
 def ejecutaBuscar():
-    rsMercancia = controlador.consultaUsuario(ID.get())
+    rsMercancia = controlador.consultaMercancia(ID.get())
     
     txtusu.delete("1.0", "end")
     for usu in rsMercancia:
@@ -72,7 +72,7 @@ btnGuardar= Button(pestana1, text="Guardar Mercancia", command=ejecutaInsert).pa
 titulo5 = Label(pestana2, text = "Eliminar Mercancia", fg = "red", font = ("Arial", 18)).pack()
  
 ID= tk.StringVar()
-lblID= Label(pestana2, text = "ID Mercancia: ").pack()
+lblID= Label(pestana2, text = "Pais Mercancia: ").pack()
 txtID= Entry(pestana2, textvariable = ID).pack()
 
 btnBuscar = Button(pestana2, text = "Buscar", command=ejecutaBuscar).pack()

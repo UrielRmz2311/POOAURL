@@ -39,29 +39,31 @@ class controlBD:
             messagebox.showinfo("Exito","Se guardo la Mercancia")
             
     # Metodo para buscar Mercancia ---------------------------------
-    def consultarMercancia(self,pa):
-            #1. Preparar la conexión
-            conx= self.conexionBD()
-            
-            #2. Verificar el ID no este vació
-            if(pa == ""):
-                messagebox.showwarning("Error ","Ingresa el Pais")
-            else:
-            #3. Proceder a buscar
-                try:
-                    #4. Prepara lo necesario para el select
-                    cursor= conx.cursor()
-                    sqlSelect= "select IDImpo, Mercancia, Pais from TB_Europa where Pais="+pa
+    def consultaMercancia(self, mercancia):
+        # Llamar a la conexión
+        conx = self.conexionBD()
+
+        # Verificar que la aduana no esté vacía
+        if mercancia == "":
+            messagebox.showwarning("Advertencia", "Revisa tu formulario, no puedes dejar campos vacíos")
+            conx.close()
+        else:
+            try:
+                # Preparar lo necesario para el select
+                cursor = conx.cursor()
+                sqlSelect = "SELECT * FROM TB_Europa WHERE Pais = ?"
+
+                # Ejecutar y guardar la consulta
+                cursor.execute(sqlSelect, (mercancia,))
+                RSaduana = cursor.fetchall()
+                conx.close()
+
+                return RSaduana
+
+            except sqlite3.OperationalError:
+                print("Error de consulta")
                     
-                    #5. Ejecución y guardado de la consulta
-                    cursor.execute(sqlSelect)
-                    RSusuario= cursor.fetchall()
-                    conx.close()
-                    
-                    return RSusuario
-                    
-                except sqlite3.OperationalError:
-                    print("Error Consulta") 
+                
     #Metodo para eliminar ususario
     def eliminarUsuario(self, id):
         conx = self.conexionBD()
@@ -72,7 +74,7 @@ class controlBD:
         else:
             try:
                 cursor = conx.cursor()
-                sqlDelete = "DELETE FROM TB_Europa WHERE IDImpo=?"
+                sqlDelete = "DELETE FROM TB_Europa WHERE Pais=?"
                 
                 cursor.execute(sqlDelete, [id])
                 eliminarusu = cursor.fetchall()
